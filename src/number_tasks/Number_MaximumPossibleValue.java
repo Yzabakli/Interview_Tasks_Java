@@ -4,7 +4,7 @@ public class Number_MaximumPossibleValue {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(maximumPossibleValue(-1234));
+        System.out.println(maximumPossibleValue(587));
         long end = System.currentTimeMillis();
         long elapsedTime = end - start;
         System.out.println("elapsedTime = " + elapsedTime);
@@ -20,7 +20,7 @@ public class Number_MaximumPossibleValue {
 
             for (int i = 0; i < numToString.length(); i++) {
 
-                if (Integer.parseInt("" + numToString.charAt(i)) <= 5){
+                if (Integer.parseInt("" + numToString.charAt(i)) < 5){
 
                    return Integer.parseInt(numToString.substring(0,i) + 5 + numToString.substring(i));
                 }
