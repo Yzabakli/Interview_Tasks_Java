@@ -9,8 +9,7 @@ public class Number_Fibonacci {
     }
     private static long isFibonacci(int n){
 
-        int j = 0;
-        int z = 1;
+        int j = 0, z = 1;
 
         for (int i = 1; i < n; i++) {
 
