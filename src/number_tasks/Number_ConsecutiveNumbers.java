@@ -1,4 +1,4 @@
-package interview_tasks.number_tasks;
+package number_tasks;
 
 public class Number_ConsecutiveNumbers {
     public static void main(String[] args) {
