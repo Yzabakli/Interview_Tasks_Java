@@ -4,13 +4,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.Supplier;
+import java.util.stream.Stream;
+
+import static java.util.Collections.frequency;
 
 public class Number_LovelyNumber {
     public static void main(String[] args) {
 
-        System.out.println(lovelyNumber(333, 333));
-// 1000 1011,1111,1211... 1101,1121... 1110,1112...
+        long start = System.currentTimeMillis();
+        System.out.println(countLovelyNumbers(1, 4879));
+        System.out.println("elapsed time = " + (System.currentTimeMillis() - start));
     }
+
     private static int lovelyNumber(int a, int b){
 
         if (b < 111){
@@ -24,9 +30,9 @@ public class Number_LovelyNumber {
 
             if (a == b){
 
-                for (int j = 0; j < 10; j++) {
+                for (String str : String.valueOf(a).split("")) {
 
-                    if (Collections.frequency(Arrays.asList(String.valueOf(a).split("")), String.valueOf(j)) > 2){
+                    if (frequency(List.of(String.valueOf(a).split("")), str) > 2){
                         return 0;
                     }
                 }
@@ -35,21 +41,20 @@ public class Number_LovelyNumber {
 
             int count = b - a + 1;
 
-            int i;
+            if (b > 1000){
+                count -= 9 - (a / 111);
+            }
 
-            count -= b / 111;
 
-            if (b > 999){
+            for (int i = Math.max(a, 1000); i <= b; i++) {
 
-                for (i = 1000; i < b; i++) {
+                Stream<String> stream = Stream.of(String.valueOf(i).split(""));
 
-                    for (int j = 0; j < 10; j++) {
+                int finalI = i;
 
-                        if (Collections.frequency(Arrays.asList(String.valueOf(i).split("")), String.valueOf(j)) > 2){
-                            count--;
-                            break;
-                        }
-                    }
+                if (stream.anyMatch(s -> Collections.frequency(List.of(String.valueOf(finalI).split("")), s) > 2)){
+
+                    count--;
                 }
             }
             return count;
@@ -62,8 +67,10 @@ public class Number_LovelyNumber {
             boolean result = false;
 
             for (String each : list) {
-                if(Collections.frequency(list, each) < 3)
+                if (frequency(list, each) < 3) {
                     result = true;
+                    break;
+                }
             }
             if(result) {
                 count++;

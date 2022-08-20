@@ -8,7 +8,7 @@ public class Number_BinaryRepresentationOfN {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(getCountOfOnes2(16777216));
+        System.out.println(getCountOfOnes2(16777215));
         System.out.println("elapsed time = " + (System.currentTimeMillis() - start));
     }
     private static int getCountOfOnes(int n) {
