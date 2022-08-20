@@ -4,6 +4,7 @@ public class Number_Fibonacci {
     public static void main(String[] args) {
 
         System.out.println(isFibonacci(2));
+        System.out.println(isFibonacci(3));
 
     }
     private static long isFibonacci(int n){
