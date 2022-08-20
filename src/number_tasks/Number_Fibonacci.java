@@ -8,18 +8,15 @@ public class Number_Fibonacci {
     }
     private static long isFibonacci(int n){
 
-        int result = 0;
         int j = 0;
         int z = 1;
 
         for (int i = 2; i < n; i++) {
 
-            result = j + z;
+            z += j;
 
-            j = z;
-
-            z = result;
+            j = z - j;
         }
-        return result;
+        return z;
     }
 }
