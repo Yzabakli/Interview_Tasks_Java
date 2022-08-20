@@ -16,7 +16,7 @@ public class Number_LovelyNumber {
         System.out.println("elapsed time = " + (System.currentTimeMillis() - start));
 
         start = System.currentTimeMillis();
-        System.out.println(lovelyNumber(1, 4879));
+        System.out.println(lovelyNumber(1099, 4879));
         System.out.println(lovelyNumber(5, 110));
         System.out.println("elapsed time = " + (System.currentTimeMillis() - start));
     }
@@ -36,10 +36,13 @@ public class Number_LovelyNumber {
 
         int count = b - a + 1;
 
-        if (b > 1000){
-            count -= 9 - (a / 111);
-        }else {
-            return count - ((b / 111) - (a / 111));
+        if (a < 1000){
+
+            if (b > 1000){
+                count -= 9 - (a / 111);
+            }else {
+                return count - ((b / 111) - (a / 111));
+            }
         }
 
 
