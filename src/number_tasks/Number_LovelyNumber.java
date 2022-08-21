@@ -84,7 +84,6 @@ public class Number_LovelyNumber {
 
     public static int solutionWithMapAndStream(int a, int b){
         int lovelyNumberCount = 0;
-        Map<Character, Integer> digitFrequencies;
 
         if (a < 1000){
 
@@ -101,7 +100,8 @@ public class Number_LovelyNumber {
 
 
         while (a <= b){
-            digitFrequencies = new HashMap<>();
+            Map<Character, Integer> digitFrequencies = new HashMap<>();
+
             char[] digitsAsCharArray = String.valueOf(a).toCharArray();
 
             for (char c : digitsAsCharArray) {
