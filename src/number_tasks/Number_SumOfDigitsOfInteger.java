@@ -3,13 +3,13 @@ package number_tasks;
 public class Number_SumOfDigitsOfInteger {
     public static void main(String[] args) {
 
-        System.out.println(sumOfDigitsOfInteger(1234));
+        System.out.println(sumOfDigitsOfInteger2(46946446654L));
 
     }
 
-    private static int sumOfDigitsOfInteger(int n) {
+    private static long sumOfDigitsOfInteger(long n) {
 
-        int sum = 0;
+        long sum = 0;
 
         while (n > 0) {
 
@@ -19,5 +19,10 @@ public class Number_SumOfDigitsOfInteger {
         }
 
         return sum;
+    }
+
+    private static long sumOfDigitsOfInteger2(long n) {
+
+        return String.valueOf(n).chars().map(Character::getNumericValue).sum();
     }
 }

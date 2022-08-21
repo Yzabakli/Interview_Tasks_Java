@@ -44,21 +44,21 @@ public class Number_MaximumPossibleValue {
     }
     private static int solution(int N) {
         String s = "" + Math.abs(N);
-        int max = Integer.valueOf(s + 5);
+        int max = Integer.parseInt(s + 5);
         if (N > 0) {
             for (int i = 0; i < s.length(); i++) {
                 String c = "" + s.charAt(i);
                 String t = s.replaceFirst(c, 5 + c);
-                if (Integer.valueOf(t) > max) {
-                    max = Integer.valueOf(t);
+                if (Integer.parseInt(t) > max) {
+                    max = Integer.parseInt(t);
                 }
             }
         } else if (N < 0) {
             for (int i = 0; i < s.length(); i++) {
                 String c = "" + s.charAt(i);
                 String t = s.replaceFirst(c, 5 + c);
-                if (Integer.valueOf(t) < max) {
-                    max = Integer.valueOf(t);
+                if (Integer.parseInt(t) < max) {
+                    max = Integer.parseInt(t);
                 }
             }
             max = -max;

@@ -4,7 +4,7 @@ public class Number_Armstrong {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(isArmstrong(1741725));
+        System.out.println(isArmstrong2(1741725));
         long end = System.currentTimeMillis();
         long elapsedTime = end - start;
         System.out.println("elapsedTime = " + elapsedTime);
@@ -23,6 +23,17 @@ public class Number_Armstrong {
 
             sum += Math.pow(Integer.parseInt(numberToString.substring(i,i+1)) , power);
         }
+
+        return sum == number;
+    }
+
+    private static boolean isArmstrong2(int number){
+
+        int sum = String.valueOf(number)
+                .chars()
+                .map(Character::getNumericValue)
+                .map(i -> (int) Math.pow(i, String.valueOf(number).length()))
+                .sum();
 
         return sum == number;
     }

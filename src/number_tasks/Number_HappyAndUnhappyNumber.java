@@ -1,22 +1,25 @@
 package number_tasks;
 
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
 public class Number_HappyAndUnhappyNumber {
     public static void main(String[] args) {
 
-        solution2(7839);
+        happyAndUnhappyNumber3(7839);
 
     }
 
     private static void happyAndUnhappyNumber(int num) {
 
-        int a = 0, b = 0, c = 0, result = num, i = 0;
+        int result = num, i = 0;
 
-        for (i = 0; i < 100; i++) {
+        while (result != 1) {
 
-            if (result == 1) {
+            i++;
 
-                break;
-            }
             if (i > 1 && (result == num || result == 37 || result == 20)) {
 
                 if (result != 37 && result != 20) {
@@ -26,40 +29,77 @@ public class Number_HappyAndUnhappyNumber {
 
                 System.exit(1);
             }
-            if (result > 99) {
+            int temp = 0;
 
-                a = result / 100;
-                b = result % 100 / 10;
-                c = result % 100 % 10;
+            String[] array = String.valueOf(result).split("");
 
-                result = (int) (Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2));
+            for (int j = 0; j < array.length; j++) {
 
-                System.out.println(a + "² + " + b + "² + " + c + "² = " + result);
+                temp += Math.pow(Integer.parseInt(array[j]), 2);
 
-            } else if (result > 9) {
+                if (j != array.length - 1){
 
-                a = result / 10;
-                b = result % 10;
-
-                result = (int) (Math.pow(a, 2) + Math.pow(b, 2));
-
-                System.out.println(a + "² + " + b + "² = " + result);
-
-            } else {
-
-                int temp = result;
-
-                result = (int) Math.pow(result, 2);
-
-                System.out.println(temp + "² = " + result);
+                    System.out.print(array[j] + "² + ");
+                }else System.out.print(array[j] + "² = ");
             }
+            result = temp;
+
+            System.out.print(result + "\n");
         }
 
-        if (result == 1) {
+        System.out.println(num + " is happy number and it reaches 1 in " + i + " steps");
 
-            System.out.println(num + " is happy number and it reaches 1 in " + i + " round");
+    }
 
-        } else System.out.println(num + " is unhappy number");
+    private static void happyAndUnhappyNumber2(int num) {
+
+        int result = num, i = 0;
+
+        while (result != 1) {
+
+            i++;
+
+            if (i > 1 && (result == num || result == 37 || result == 20)) {
+
+                System.out.println("Unhappy number");
+
+                System.exit(1);
+            }
+            int temp = 0;
+
+            String[] array = String.valueOf(result).split("");
+
+            for (String str : array) {
+
+                temp += Math.pow(Integer.parseInt(str), 2);
+            }
+            result = temp;
+        }
+
+        System.out.println("Happy number");
+
+    }
+
+    private static void happyAndUnhappyNumber3(int num) {
+
+        int result = num;
+        int i = 0;
+
+        while (result != 1) {
+
+            i++;
+
+            if (i > 1 && (result == num || result == 37 || result == 20)) {
+
+                System.out.println("Unhappy number");
+
+                System.exit(1);
+            }
+            result = String.valueOf(result).chars().map(Character::getNumericValue).map(j -> j*j).sum();
+        }
+
+        System.out.println("Happy number");
+
     }
 
     private static void solution(int n) {
@@ -83,14 +123,14 @@ public class Number_HappyAndUnhappyNumber {
         }
     }
 
-    private static void solution2(int num) {
+    private static void happy(int num) {
 
         int result = num;
 
 
         while (result != 1 && result != 4) {
 
-            int a = 0, b = 0;
+            int a, b = 0;
 
             for (int i = 0; i < String.valueOf(result).length(); i++) {
 
