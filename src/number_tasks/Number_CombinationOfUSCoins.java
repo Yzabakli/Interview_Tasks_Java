@@ -3,7 +3,7 @@ package number_tasks;
 public class Number_CombinationOfUSCoins {
     public static void main(String[] args) {
 
-        System.out.println(combinationOfUSCoins(100));
+        System.out.println(solution(11));
 
     }
     private static int combinationOfUSCoins(int cents){
@@ -68,7 +68,7 @@ public class Number_CombinationOfUSCoins {
         return count10;
     }
 
-    private static int combinationOfUSCoins2(int cents) {
+    private static int solution(int cents) {
         int count = 0;
         int[] coins = {1, 5, 10, 25, 50};
         int[][] s = new int[coins.length + 1][cents + 1];
@@ -95,5 +95,34 @@ public class Number_CombinationOfUSCoins {
         }
         return s[coins.length][cents];
 
+    }
+
+    private static int nestedFor(int amount, int[] coins) {
+        if (amount < 0) {
+            return 0;
+        }
+
+        if (coins == null || coins.length == 0) {
+            return 0;
+        }
+        // Create an array that memorizes the number of ways to make change for each amount
+        // and also keeps the total counted ways
+        int[] ways = new int[amount + 1];
+        ways[0] = 1;
+        // start from each denomination and update ways array for each remaining amount
+        for (int coin : coins) {
+            // we need to update ways of getting change for every amount from 1 to amount
+//            for(int i = 1; i <= amount; i++) {
+//                // make sure our coin is at least the value of current amount
+//                if(coin <= i) {
+//                    ways[i] += ways[i-coin];
+//                }
+//            }
+            //We simplify the inner for loop slightly by changing is as below
+            for (int i = coin; i <= amount; ++i) {
+                ways[i] += ways[i - coin];
+            }
+        }
+        return ways[amount];
     }
 }

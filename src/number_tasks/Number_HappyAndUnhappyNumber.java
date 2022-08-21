@@ -1,14 +1,9 @@
 package number_tasks;
 
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
-
 public class Number_HappyAndUnhappyNumber {
     public static void main(String[] args) {
 
-        happyAndUnhappyNumber3(7839);
+        happyAndUnhappyNumber(7839);
 
     }
 
@@ -105,7 +100,7 @@ public class Number_HappyAndUnhappyNumber {
     private static void solution(int n) {
 
         while (n != 1 && n != 4) {
-            int r = 0, sum = 0;
+            int r, sum = 0;
 
             while (n > 0) {
                 r = n % 10;
@@ -123,7 +118,7 @@ public class Number_HappyAndUnhappyNumber {
         }
     }
 
-    private static void happy(int num) {
+    private static void happyAndUnhappyNumber4(int num) {
 
         int result = num;
 

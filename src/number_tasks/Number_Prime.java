@@ -23,11 +23,7 @@ public class Number_Prime {
 
             return true;
 
-        }else if (prime2){
-
-            return true;
-
-        }else return false;
+        }else return prime2;
     }
     private static boolean solution(long num) {
         if (num < 2) {
