@@ -3,7 +3,7 @@ package number_tasks;
 public class Number_CombinationOfUSCoins {
     public static void main(String[] args) {
 
-        System.out.println(solution(11));
+        System.out.println(combinationOfUSCoins(11));
 
     }
     private static int combinationOfUSCoins(int cents){
@@ -16,10 +16,7 @@ public class Number_CombinationOfUSCoins {
 
                 int count5 = 0;
 
-                for (int i = 1; i * 5 <= cents; i++) {
-
-                    count5++;
-                }
+                count5 += cents / 5;
 
                 if (cents >= dime){
 
