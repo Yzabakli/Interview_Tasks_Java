@@ -1,6 +1,7 @@
 package number_tasks;
 
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.Collections.frequency;
@@ -44,11 +45,9 @@ public class Number_LovelyNumber {
 
         for (int i = Math.max(a, 1000); i <= b; i++) {
 
-            Stream<String> stream = Stream.of(String.valueOf(i).split(""));
-
             int finalI = i;
 
-            if (stream.anyMatch(s -> Collections.frequency(List.of(String.valueOf(finalI).split("")), s) > 2)){
+            if (String.valueOf(i).chars().limit(String.valueOf(i).length() - 2).anyMatch(s -> Collections.frequency(String.valueOf(finalI).chars().boxed().collect(Collectors.toList()), s) > 2)){
 
                 count--;
             }
@@ -114,7 +113,7 @@ public class Number_LovelyNumber {
             }
 
             //checking if there is any digit that has more than two frequencies.
-            if (digitFrequencies.values().stream().noneMatch(frequency -> frequency > 2))
+            if (!digitFrequencies.containsValue(3))
                 lovelyNumberCount++;
 
             a++;
