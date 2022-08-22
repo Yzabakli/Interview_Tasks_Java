@@ -1,68 +1,73 @@
 package number_tasks;
 
+import java.util.Arrays;
+
 public class Number_CombinationOfUSCoins {
     public static void main(String[] args) {
 
-        System.out.println(combinationOfUSCoins(11));
+        System.out.println(combinationOfUSCoins2(100, 0));
 
     }
-    private static int combinationOfUSCoins(int cents){
+    private static int combinationOfUSCoins(int cents, int coin){
 
         int dime = 10, quarter = 25, halfDollar = 50;
-        
-        if (cents >= 1){
 
-            if (cents >= 5){
+        if (cents >= 5){
 
-                int count5 = 0;
+            int count5 = cents / 5;
 
-                count5 += cents / 5;
+            if (cents >= dime && coin != dime){
 
-                if (cents >= dime){
+                int count10 = getCount(cents, dime, count5, 0);
 
-                    int count10 = 0;
+                if (cents >= quarter && coin != quarter){
 
-                    count10 = getCount(cents, dime, count5, count10);
+                    int count25 = getCount(cents, quarter, count10, 0);
 
-                    if (cents >= quarter){
+                    if (cents >= halfDollar && coin != halfDollar){
 
-                        int count25 = 0;
+                        int count50 = getCount(cents, halfDollar, count25, 0);
 
-                        count25 = getCount(cents, quarter, count10, count25);
+                        return count50 + 1;
 
-                        if (cents >= halfDollar){
+                    }else return count25 + 1;
 
-                            int count50 = 0;
+                }else return count10 + 1;
 
-                            count50 = getCount(cents, halfDollar, count25, count50);
+            }else return count5 + 1;
 
-                            return count50 + 1;
-
-                        }else return count25 + 1;
-
-                    }else return count10 + 1;
-
-                }else return count5 + 1;
-
-            }else return 1;
-        }
-
-        return 0;
+        }else return 1;
     }
 
-    private static int getCount(int cents, int coin, int count5, int count10) {
+    private static int combinationOfUSCoins2(int cents, int coin){
+
+        int[] coins = {10, 25, 50};
+        int[] counts = {0, 0, 0, 0};
+
+        if (cents >= 5){
+
+            counts[0] = cents / 5;
+
+            for (int i = 0; i < coins.length; i++) {
+
+                if (cents >= coins[i] && coin != coins[i]){
+                    counts[i+1] = getCount(cents, coins[i], counts[i], 0);
+                }else return counts[i] + 1;
+            }
+            return counts[counts.length - 1] + 1;
+        }
+        return 1;
+    }
+
+    private static int getCount(int cents, int coin, int firstCount, int secondCount) {
         for (int i = 1; i * coin <= cents; i++) {
 
-            if (i * coin == cents){
-                count10++;
-                continue;
-            }
-            count10 += combinationOfUSCoins(cents - i * coin);
+            secondCount += combinationOfUSCoins2(cents - i * coin, coin);
         }
 
-        count10 += count5;
+        secondCount += firstCount;
 
-        return count10;
+        return secondCount;
     }
 
     private static int solution(int cents) {

@@ -2,6 +2,7 @@ package number_tasks;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import static java.util.Collections.frequency;
@@ -10,11 +11,15 @@ public class Number_LovelyNumber {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(lovelyNumber(1, 4789));
+        System.out.println(lovelyNumber2(1, 4879));
         System.out.println("elapsed time = " + (System.currentTimeMillis() - start));
 
         start = System.currentTimeMillis();
-        System.out.println(solutionWithMapAndStream(1, 4789));
+        System.out.println(solutionWithMapAndStream(1, 4879));
+        System.out.println("elapsed time = " + (System.currentTimeMillis() - start));
+
+        start = System.currentTimeMillis();
+        System.out.println(lovelyNumber(1, 4879));
         System.out.println("elapsed time = " + (System.currentTimeMillis() - start));
     }
 
@@ -56,6 +61,23 @@ public class Number_LovelyNumber {
 
     }
 
+    private static int lovelyNumber2(int a, int b){
+        return (int) IntStream.range(a,b+1).parallel().filter(Number_LovelyNumber::isLovely).count();
+    }
+    private static boolean isLovely(int num){
+        Map<Character, Integer> digitFrequencies = new HashMap<>();
+
+        char[] digitsAsCharArray = String.valueOf(num).toCharArray();
+
+        for (char c : digitsAsCharArray) {
+            digitFrequencies.put(c, digitFrequencies.getOrDefault(c, 0) + 1);
+
+            if (digitFrequencies.getOrDefault(c, 0) > 2)
+                return false;
+        }
+
+        return !digitFrequencies.containsValue(3);
+    }
     public static int solutionWithNestedFor(int a, int b){
         int lovelyNumberCount = 0;
 
