@@ -65,6 +65,7 @@ public class Number_CombinationOfUSCoins {
         for (int i = 1; i * coin <= cents; i++) {
 
             secondCount += combinationOfUSCoins(cents - i * coin, coin);
+            //secondCount += combinationOfUSCoins2(cents - i * coin, coin);
         }
 
         secondCount += firstCount;
