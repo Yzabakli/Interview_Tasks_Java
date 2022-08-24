@@ -18,15 +18,15 @@ public class Number_CombinationOfUSCoins {
 
             if (cents >= dime && coin != dime){
 
-                int count10 = getCount(cents, dime, count5, 0);
+                int count10 = getCount(cents, dime, count5);
 
                 if (cents >= quarter && coin != quarter){
 
-                    int count25 = getCount(cents, quarter, count10, 0);
+                    int count25 = getCount(cents, quarter, count10);
 
                     if (cents >= halfDollar && coin != halfDollar){
 
-                        int count50 = getCount(cents, halfDollar, count25, 0);
+                        int count50 = getCount(cents, halfDollar, count25);
 
                         return count50 + 1;
 
@@ -51,7 +51,7 @@ public class Number_CombinationOfUSCoins {
             for (int i = 0; i < coins.length; i++) {
 
                 if (cents >= coins[i] && coin != coins[i]){
-                    counts[i+1] = getCount(cents, coins[i], counts[i], 0);
+                    counts[i+1] = getCount(cents, coins[i], counts[i]);
                 }else return counts[i] + 1;
             }
             return counts[counts.length - 1] + 1;
@@ -59,7 +59,9 @@ public class Number_CombinationOfUSCoins {
         return 1;
     }
 
-    private static int getCount(int cents, int coin, int firstCount, int secondCount) {
+    private static int getCount(int cents, int coin, int firstCount) {
+        int secondCount = 0;
+
         for (int i = 1; i * coin <= cents; i++) {
 
             secondCount += combinationOfUSCoins2(cents - i * coin, coin);
