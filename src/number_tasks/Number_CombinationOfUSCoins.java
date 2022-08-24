@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Number_CombinationOfUSCoins {
     public static void main(String[] args) {
 
-        System.out.println(combinationOfUSCoins2(100, 0));
+        System.out.println(combinationOfUSCoins(20, 0));
 
     }
     private static int combinationOfUSCoins(int cents, int coin){
@@ -64,7 +64,7 @@ public class Number_CombinationOfUSCoins {
 
         for (int i = 1; i * coin <= cents; i++) {
 
-            secondCount += combinationOfUSCoins2(cents - i * coin, coin);
+            secondCount += combinationOfUSCoins(cents - i * coin, coin);
         }
 
         secondCount += firstCount;
