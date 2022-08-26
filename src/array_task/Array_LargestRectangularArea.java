@@ -1,5 +1,9 @@
 package array_task;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Array_LargestRectangularArea {
     public static void main(String[] args) {
 
@@ -8,18 +12,31 @@ public class Array_LargestRectangularArea {
     }
 
     private static int largestRectangularArea(int[] array) {
+        
+        int count;
 
-        int max = Integer.MIN_VALUE;
+        List<Integer> list = new ArrayList<>();
 
-        for (int num : array) {
-            if (num == max) {
-                continue;
+        for (int i = 0; i < array.length; i++) {
+            count = 1;
+
+            for (int j = i + 1; j < array.length; j++) {
+
+                if (array[j] < array[i]){
+                    break;
+                }
+                count++;
             }
-            if (num > max) {
-                max = num;
+
+            for (int length = i - 1; length >= 0; length--) {
+
+                if (array[length] < array[i]){
+                    break;
+                }
+                count++;
             }
+            list.add(array[i] * count);
         }
-
-        return max * 2;
+        return Collections.max(list);
     }
 }

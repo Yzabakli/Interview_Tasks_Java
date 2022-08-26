@@ -1,5 +1,7 @@
 package array_task;
 
+import java.util.Arrays;
+
 public class Array_FindMaximum_And_FindMinimum {
     public static void main(String[] args) {
 
@@ -11,6 +13,7 @@ public class Array_FindMaximum_And_FindMinimum {
 
         long start = System.currentTimeMillis();
 
+        System.out.println(findMaximum(ints));
         System.out.println(findMinimum(ints));
 
         long end = System.currentTimeMillis();
@@ -43,5 +46,15 @@ public class Array_FindMaximum_And_FindMinimum {
         }
 
         return min;
+    }
+
+    private static int findMaximum2(int[] array){
+
+        return Arrays.stream(array).max().getAsInt();
+    }
+
+    private static int findMinimum2(int[] array){
+
+        return Arrays.stream(array).min().getAsInt();
     }
 }
