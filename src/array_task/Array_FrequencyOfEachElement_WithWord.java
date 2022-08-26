@@ -14,8 +14,11 @@ public class Array_FrequencyOfEachElement_WithWord {
 
         Map<Object, String> frequencyMap = frequencyOfEachMethod(array);
 
-        System.out.println(frequencyMap.toString().replace("=", " is ").replace(", ", "\n")
-                .replace("{", "").replace("}", ""));
+        System.out.println(frequencyMap.toString()
+                .replace("=", " is ")
+                .replace(", ", "\n")
+                .replace("{", "")
+                .replace("}", ""));
     }
 
     private static Map<Object, String> frequencyOfEachMethod(int[] array) {
