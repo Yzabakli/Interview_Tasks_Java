@@ -12,13 +12,11 @@ public class Array_LargestRectangularArea {
     }
 
     private static int largestRectangularArea(int[] array) {
-        
-        int count;
 
         List<Integer> list = new ArrayList<>();
 
         for (int i = 0; i < array.length; i++) {
-            count = 1;
+            int count = 1;
 
             for (int j = i + 1; j < array.length; j++) {
 
