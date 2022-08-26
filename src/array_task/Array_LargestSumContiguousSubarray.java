@@ -5,7 +5,7 @@ public class Array_LargestSumContiguousSubarray {
 
         long start = System.currentTimeMillis();
 
-        System.out.println(largestSumContiguousSubarray2(new int[]{-2, -1, -3, -4, -1, -2, -1, -5, -4}));
+        System.out.println(largestSumContiguousSubarray(new int[]{-2,1,-3,4,-1,2,1,-5,4}));
 
         long end = System.currentTimeMillis();
         long elapsedTime = end - start;
@@ -18,9 +18,7 @@ public class Array_LargestSumContiguousSubarray {
         int max = 0, temp = 0, temp2 = Integer.MIN_VALUE;
 
         for (int num : array) {
-            if (num > temp2) {
-                temp2 = num;
-            }
+            temp2 = Math.max(temp2, num);
         }
 
         if (temp2 <= 0) {
@@ -38,7 +36,7 @@ public class Array_LargestSumContiguousSubarray {
         return max;
     }
 
-    private static int largestSumContiguousSubarray2(int[] array) {
+    private static int solution(int[] array) {
 
         int sum = 0, sum2 = Integer.MIN_VALUE;
 
