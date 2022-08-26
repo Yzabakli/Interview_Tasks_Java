@@ -1,10 +1,13 @@
 package array_task;
 
+import java.util.Arrays;
+import java.util.stream.IntStream;
+
 public class Array_MergeTwoArrays {
     public static void main(String[] args) {
 
-        int[] arr1 = new int[100000000];
-        int[] arr2 = new int[100000000];
+        int[] arr1 = new int[10000000];
+        int[] arr2 = new int[10000000];
 
         int i = 0;
         int k = arr2.length;
@@ -13,13 +16,8 @@ public class Array_MergeTwoArrays {
             arr1[j] = i++;
             arr2[j] = k--;
         }
-        long start = System.currentTimeMillis();
 
-        mergeTwoArrays(arr1, arr2);
-
-        long end = System.currentTimeMillis();
-        long elapsedTime = end - start;
-        System.out.println("elapsedTime = " + elapsedTime);
+        System.out.println(Arrays.toString(mergeTwoArrays2(arr1, arr2)));
 
     }
 
@@ -40,8 +38,12 @@ public class Array_MergeTwoArrays {
         }
         return mergedArray;
     }
+    private static int[] mergeTwoArrays2(int[] arr1, int[] arr2) {
 
-    public static int[] concatTwoArrays(int[] arr1, int[] arr2) {
+        return IntStream.concat(IntStream.of(arr1), IntStream.of(arr2)).toArray();
+    }
+
+    public static int[] solution(int[] arr1, int[] arr2) {
 
         int[] result = new int[arr1.length + arr2.length];
 
