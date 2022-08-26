@@ -3,37 +3,24 @@ package array_task;
 public class Array_LargestSumContiguousSubarray {
     public static void main(String[] args) {
 
-        long start = System.currentTimeMillis();
-
         System.out.println(largestSumContiguousSubarray(new int[]{-2,1,-3,4,-1,2,1,-5,4}));
-
-        long end = System.currentTimeMillis();
-        long elapsedTime = end - start;
-        System.out.println("elapsedTime = " + elapsedTime);
 
     }
 
     private static int largestSumContiguousSubarray(int[] array) {
 
-        int max = 0, temp = 0, temp2 = Integer.MIN_VALUE;
+        int max2 = 0;
 
-        for (int num : array) {
-            temp2 = Math.max(temp2, num);
+        for (int i = 0; i < array.length; i++) {
+            int max = array[i];
+
+            for (int j = i + 1; j < array.length; j++) {
+
+                max += array[j];
+                max2 = Math.max(max, max2);
+            }
         }
-
-        if (temp2 <= 0) {
-
-            return temp2;
-
-        }
-
-        for (int each : array) {
-            temp = temp + each;
-            temp = Integer.max(temp, 0);
-            max = Integer.max(max, temp);
-        }
-
-        return max;
+        return max2;
     }
 
     private static int solution(int[] array) {

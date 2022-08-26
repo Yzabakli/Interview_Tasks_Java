@@ -6,65 +6,27 @@ public class Array_MaximumProfit {
     public static void main(String[] args) {
 
         int[] array = {11, 3, 13, 3, 1, 4, 9, 12, 11};
-
-        long start = System.currentTimeMillis();
+        int[] array2 = {8, 3, 3, 1, 4, 9, 12, 11};
 
         System.out.println(maximumProfit(array));
-        System.out.println(maximumProfit2(array));
-
-        long end = System.currentTimeMillis();
-        long elapsedTime = end - start;
-        System.out.println("elapsedTime = " + elapsedTime);
+        System.out.println(solution(array));
     }
 
     private static int maximumProfit(int[] array) {
 
-        int max = array[1], maxIndex = 0, min = array[array.length - 2], minIndex = 0;
+        int profit = 0;
 
         for (int i = 0; i < array.length; i++) {
-            if (i > 1 && array[i] >= max) {
-                max = array[i];
-                maxIndex = i;
-            }
-            if (array[i] < min && i < array.length - 2) {
 
-                min = array[i];
-                minIndex = i;
+            for (int j = i + 1; j < array.length; j++) {
+
+                profit = Integer.max(profit, array[j] - array[i]);
             }
         }
-
-        System.out.println(Arrays.toString(array));
-
-        if (minIndex < maxIndex) {
-
-            return max - min;
-
-        } else {
-
-            int tempMin = Integer.MAX_VALUE;
-            int tempMax = Integer.MIN_VALUE;
-
-            for (int i = 0, j = minIndex + 1; true; i++, j++) {
-
-                if (i < maxIndex || j < array.length) {
-
-                    if (i < maxIndex && array[i] < tempMin) {
-
-                        tempMin = array[i];
-
-                    }
-                    if (j < array.length && array[j] > tempMax) {
-
-                        tempMax = array[j];
-                    }
-
-                } else break;
-            }
-            return Integer.max((max - tempMin), (tempMax - min));
-        }
+        return profit;
     }
 
-    private static int maximumProfit2(int[] arr) {
+    private static int solution(int[] arr) {
 
         int min = arr[0];
         int max = Integer.MIN_VALUE;
