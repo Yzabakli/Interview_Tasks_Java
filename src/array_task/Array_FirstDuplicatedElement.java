@@ -1,6 +1,6 @@
 package array_task;
 
-public class Array_FirstUniqueElement {
+public class Array_FirstDuplicatedElement {
     public static void main(String[] args) {
 
         Integer[] arr = new Integer[100000000];
