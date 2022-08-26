@@ -4,7 +4,7 @@ public class Number_Prime {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(isPrime(100055128505716009L));
+        System.out.println(isPrime(1000551285057161L));
         long end = System.currentTimeMillis();
         long elapsedTime = end - start;
         System.out.println("elapsedTime = " + elapsedTime);

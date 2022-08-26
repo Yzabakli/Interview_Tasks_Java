@@ -7,12 +7,10 @@ import java.util.Map;
 public class Array_AddUpToSum {
     public static void main(String[] args) {
 
-
+        addUpToSum(new int[]{1, 2, 3, 10, 9}, 12);
     }
 
     private static void addUpToSum(int[] arr, int sum) {
-
-        int temp = 0;
 
         Map<Integer , Integer> integerMap = new LinkedHashMap<>();
 
@@ -22,7 +20,7 @@ public class Array_AddUpToSum {
 
                 if (arr[i] + arr[j] == sum){
 
-                    integerMap.put(arr[i] , arr[j]);
+                    integerMap.putIfAbsent(arr[i], arr[j]);
 
                 }
             }

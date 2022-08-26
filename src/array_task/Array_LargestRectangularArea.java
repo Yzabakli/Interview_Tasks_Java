@@ -26,9 +26,9 @@ public class Array_LargestRectangularArea {
                 count++;
             }
 
-            for (int length = i - 1; length >= 0; length--) {
+            for (int k = i - 1; k >= 0; k--) {
 
-                if (array[length] < array[i]){
+                if (array[k] < array[i]){
                     break;
                 }
                 count++;
