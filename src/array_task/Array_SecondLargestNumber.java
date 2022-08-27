@@ -13,7 +13,7 @@ public class Array_SecondLargestNumber {
             nums[i] = i+1;
         }
 
-        System.out.println(secondLargestNumber2(nums));
+        System.out.println(secondLargestNumber3(nums));
     }
 
     private static int secondLargestNumber(int[] array) {
@@ -34,5 +34,21 @@ public class Array_SecondLargestNumber {
     private static int secondLargestNumber2(int[] array) {
         int max = Arrays.stream(array).max().getAsInt();
         return Arrays.stream(array).filter(value -> value != max).max().getAsInt();
+    }
+
+    private static int secondLargestNumber3(int[] array) {
+        array = Arrays.stream(array).sorted().toArray();
+        if (array[array.length - 1] != array[array.length - 2]){
+            return array[array.length - 2];
+        }
+        int max = array[array.length - 1];
+
+        for (int i = array.length - 3; i >= 0; i--) {
+
+            if (array[i] != max){
+                return array[i];
+            }
+        }
+        return max;
     }
 }
