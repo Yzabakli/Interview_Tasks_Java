@@ -14,7 +14,6 @@ public class Array_SecondLargestNumber {
         }
 
         System.out.println(secondLargestNumber2(nums));
-
     }
 
     private static int secondLargestNumber(int[] array) {
@@ -32,7 +31,8 @@ public class Array_SecondLargestNumber {
         return max2;
     }
 
-    private static int secondLargestNumber2(int[] arr) {
-        return Arrays.stream(arr).filter(p -> p != Arrays.stream(arr).max().getAsInt()).max().getAsInt();
+    private static int secondLargestNumber2(int[] array) {
+        int max = Arrays.stream(array).max().getAsInt();
+        return Arrays.stream(array).filter(value -> value != max).max().getAsInt();
     }
 }
