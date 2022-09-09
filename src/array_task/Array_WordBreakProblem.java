@@ -9,7 +9,7 @@ public class Array_WordBreakProblem {
 
         String string = "applepenapple";
 
-        System.out.println(wordBreakProblem3(Arrays.asList("leet", "code"), "leetcode"));
+        System.out.println(wordBreakProblem2(Arrays.asList("leet", "code"), "leetcode"));
         // System.out.println(wordBreakProblem2(new String[]{"i", "like", "sam", "sung", "samsung", "mobile", "ice", "cream", "icecream", "man", "go", "mango"}, string));
 
     }
@@ -36,8 +36,6 @@ public class Array_WordBreakProblem {
 
     private static boolean wordBreakProblem2(List<String> dictionary, String input) {
 
-        int b = 0;
-
         int m = Integer.MAX_VALUE;
 
         String length = input;
@@ -59,7 +57,6 @@ public class Array_WordBreakProblem {
                     if (length.contains(dictionary.get(i)) && length.indexOf(dictionary.get(i)) == 0) {
                         temp += dictionary.get(i).length();
                         length = length.substring(dictionary.get(i).length());
-                        b++;
                     }
                 }
             }
@@ -75,7 +72,6 @@ public class Array_WordBreakProblem {
                     if (length.contains(dictionary.get(i)) && length.indexOf(dictionary.get(i)) == 0) {
                         temp += dictionary.get(i).length();
                         length = length.substring(dictionary.get(i).length());
-                        b++;
                     }
                 }
             }
@@ -86,10 +82,7 @@ public class Array_WordBreakProblem {
                 return false;
             }
 
-        } while (b > 0);
-
-
-        return false;
+        } while (true);
     }
 
     private static boolean wordBreakProblem3(List<String> dictionary, String input) {
