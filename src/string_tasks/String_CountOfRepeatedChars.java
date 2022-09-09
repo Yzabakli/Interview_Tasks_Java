@@ -12,21 +12,21 @@ public class String_CountOfRepeatedChars {
 
         word = word.trim();
 
-        for (int i = 0; i < word.length();) {
+        while (word.length() > 0){
 
             int count = 1;
 
-            int j;
-            for (j = i + 1; j < word.length(); j++) {
+            int i;
+            for (i = 1; i < word.length(); i++) {
 
-                if (word.charAt(j) == word.charAt(i)) {
+                if (word.charAt(i) == word.charAt(0)) {
 
                     count++;
                 } else break;
             }
-            result += "" + word.charAt(i) + count;
+            result += "" + word.charAt(0) + count;
 
-            word = word.substring(j);
+            word = word.substring(i);
         }
         return result;
     }
