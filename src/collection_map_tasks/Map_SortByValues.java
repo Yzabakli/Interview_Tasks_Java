@@ -1,14 +1,13 @@
 package collection_map_tasks;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Map_SortByValues {
     public static void main(String[] args) {
 
-        System.out.println(sortByValue(new HashMap<>(Map.of("name", 4, "age", 3, "gender", 2, "car", 1))));
+        System.out.println(sortByValue2(new HashMap<>(Map.of("name", 4, "age", 3, "gender", 2, "car", 1))));
 
     }
 
@@ -23,5 +22,14 @@ public class Map_SortByValues {
         map1.forEach((k, v) -> map2.put(v, k));
 
         return map2;
+    }
+
+    private static Map<String, Integer> sortByValue2(Map<String, Integer> map) {
+
+        Map<String, Integer> map1 = new LinkedHashMap<>();
+
+        map.entrySet().stream().sorted(Map.Entry.comparingByValue()).forEach(stringIntegerEntry -> map1.put(stringIntegerEntry.getKey(), stringIntegerEntry.getValue()));
+
+        return map1;
     }
 }
