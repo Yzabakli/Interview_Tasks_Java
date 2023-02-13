@@ -1,9 +1,12 @@
 package number_tasks;
 
+import java.util.Arrays;
+
 public class Number_FINRA_DivisibleBy3_5 {
     public static void main(String[] args) {
 
-        fINRA();
+        System.out.println(010);
+        System.out.println(07);
 
     }
     private static void fINRA() {
@@ -24,5 +27,24 @@ public class Number_FINRA_DivisibleBy3_5 {
 
             }else System.out.println(i);
         }
+    }
+
+    private static void typeCounter(String p) {
+
+        int st = 0, in = 0, db = 0;
+
+        for (String c : p.trim().split(" ")) {
+
+            if (c.equals("")) continue;
+            if (Character.isLetter(c.charAt(0))) st++;
+            else if (c.contains(".")) db++;
+            else in++;
+        }
+
+        System.out.println("string " + st);
+        System.out.println("integer " + in);
+        System.out.println("double " + db);
+
+
     }
 }

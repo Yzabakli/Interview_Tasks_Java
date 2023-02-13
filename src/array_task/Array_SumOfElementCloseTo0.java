@@ -13,16 +13,16 @@ public class Array_SumOfElementCloseTo0 {
         System.out.println(sumOfElementCloseTo0(nums));
 
     }
-    private static int sumOfElementCloseTo0(int[] array) {
+    private static int sumOfElementCloseTo0(int[] nums) {
 
-        int sum = array[0] + array[1];
+        int sum = nums[0] + nums[1];
 
-        for (int i = 0; i < array.length; i++) {
+        for (int i = 0; i < nums.length; i++) {
 
-            for (int j = i + 1; j < array.length; j++) {
+            for (int j = i + 1; j < nums.length; j++) {
 
-                if (Math.abs(array[i] + array[j]) < Math.abs(sum)){
-                    sum = array[i] + array[j];
+                if (Math.abs(nums[i] + nums[j]) < Math.abs(sum)){
+                    sum = nums[i] + nums[j];
                 }
             }
         }

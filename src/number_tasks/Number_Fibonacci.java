@@ -9,6 +9,7 @@ public class Number_Fibonacci {
 
         System.out.println(fibonacci(10));
         System.out.println(fibonacci2(10));
+        System.out.println(fibonacci3(10));
 
     }
     private static long fibonacci2(int n){
@@ -18,6 +19,8 @@ public class Number_Fibonacci {
     }
     private static long fibonacci(int n){
 
+        if (n == 0) return 0;
+        if (n == 1) return 1;
         int j = 0, z = 1;
 
         for (int i = 1; i < n; i++) {
@@ -27,5 +30,12 @@ public class Number_Fibonacci {
             j = z - j;
         }
         return z;
+    }
+
+    private static long fibonacci3(int n){
+
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+        return fibonacci3(n - 1) + fibonacci3(n - 2);
     }
 }

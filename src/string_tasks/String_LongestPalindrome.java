@@ -68,27 +68,27 @@ public class String_LongestPalindrome {
 
         return longest;
     }
-    private static String longestPalindrome2(String str) {
+    private static String longestPalindrome2(String s) {
         String result = "";
-        for (int i = 0; i < str.length(); i = i + 1) {
+        for (int i = 0; i < s.length(); i = i + 1) {
             int b = i;
             int e = i;
-            while (b >= 0 && e <= str.length() - 1 && str.charAt(b) == str.charAt(e)) {
+            while (b >= 0 && e <= s.length() - 1 && s.charAt(b) == s.charAt(e)) {
                 b--;
                 e++;
             }
-            String temp = str.substring(b + 1, e);
+            String temp = s.substring(b + 1, e);
             if (temp.length() > result.length()) result = temp;
 
 
             b = i; // for even length palindromes
             e = i + 1;
-            while (b >= 0 && e <= str.length() - 1 && str.charAt(b) ==
-                    str.charAt(e)) {
+            while (b >= 0 && e <= s.length() - 1 && s.charAt(b) ==
+                    s.charAt(e)) {
                 b--;
                 e++;
             }
-            temp = str.substring(b + 1, e);
+            temp = s.substring(b + 1, e);
             if (temp.length() > result.length()) {
                 result = temp;
             }

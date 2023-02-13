@@ -1,13 +1,12 @@
 package string_tasks;
 
-import java.util.Arrays;
-import java.util.LinkedHashSet;
-import java.util.Set;
+
+import java.util.*;
 
 public class String_PermutationsOfString {
     public static void main(String[] args) {
 
-        permutationsOfString("abc");
+        System.out.println(defaultSolution_permutation("ab"));
 
     }
     public static void permutationsOfString(String ch) {
@@ -16,8 +15,8 @@ public class String_PermutationsOfString {
         }
     }
 
-    public static Set<String> defaultSolution_permutation(String ch) {
-        String str = Arrays.toString(ch.toCharArray()).replace(", ", "").replace("[", "").replace("]", "");
+    public static List<String> defaultSolution_permutation(String s) {
+        String str = Arrays.toString(s.toCharArray()).replace(", ", "").replace("[", "").replace("]", "");
         Set<String> set = new LinkedHashSet<>();
 
         if (str.length() == 1) {
@@ -33,6 +32,6 @@ public class String_PermutationsOfString {
 
         }
 
-        return set;
+        return new ArrayList<>(set);
     }
 }

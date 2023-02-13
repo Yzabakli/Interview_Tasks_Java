@@ -7,7 +7,7 @@ public class Number_ReverseInteger {
     public static void main(String[] args) {
 
         long start = System.currentTimeMillis();
-        System.out.println(reverseInteger2(12345678910111213L));
+        System.out.println(reverse(153423646));
         long end = System.currentTimeMillis();
         long elapsedTime = end - start;
         System.out.println("elapsedTime = " + elapsedTime);
@@ -29,15 +29,22 @@ public class Number_ReverseInteger {
         return Long.parseLong(Arrays.toString(String.valueOf(num).chars().map(Character::getNumericValue).asLongStream().boxed()
                 .sorted(Comparator.reverseOrder()).toArray()).replace("[", "").replace(", ", "").replace("]", ""));
     }
-    private static long reverse(long number){
-        if(number < 10 && number >= 0){
-            return number;
+    private static long reverse(int x){
+        if(x < 10 && x >= 0){
+            return x;
         }
 
-        long result = 0;
-        while (number !=0) {
-            result = result * 10 + number % 10;
-            number /= 10;
+        int result = 0;
+        long check = 0;
+
+        while (x !=0) {
+            result = result * 10 + x % 10;
+            check = check * 10 + x % 10;
+            x /= 10;
+
+            if (check != result){
+                return 0;
+            }
         }
 
         return result;

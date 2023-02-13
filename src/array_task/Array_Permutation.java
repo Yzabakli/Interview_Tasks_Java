@@ -7,7 +7,7 @@ import java.util.Set;
 public class Array_Permutation {
     public static void main(String[] args) {
 
-        permutation(new char[]{'a', 'b', 'c'});
+        printPermutation(new char[]{'a', 'b', 'c'});
     }
 
     private static void permutation(char[] array) {
